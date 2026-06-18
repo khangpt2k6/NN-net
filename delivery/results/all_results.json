@@ -1,0 +1,98 @@
+{
+  "experiment_info": {
+    "dataset": "Dataset004_Hippocampus (synthetic)",
+    "n_cases": 10,
+    "fold": 0,
+    "train_cases": 8,
+    "val_cases": 2,
+    "epochs": 5,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "torch": "2.6.0+cu124",
+    "cudnn": 90100,
+    "cudnn_benchmark": true,
+    "note": "Synthetic data — labels are fixed geometric shapes (same across all cases). Relative comparison only."
+  },
+  "results": [
+    {
+      "id": 1,
+      "trainer_config": "nnUNetTrainer_5epochs__nnUNetPlans__3d_fullres",
+      "label": "Baseline — Dice+CE loss, vanilla plans, 3D fullres",
+      "foreground_Dice": 0.2203,
+      "foreground_IoU": 0.1413,
+      "class1_Dice": 0.4405,
+      "class2_Dice": 0.0,
+      "type": "validation"
+    },
+    {
+      "id": 2,
+      "trainer_config": "nnUNetTrainer_5epochs__nnUNetPlans__2d",
+      "label": "2D config (same trainer, 2D slices)",
+      "foreground_Dice": 0.2087,
+      "foreground_IoU": 0.1319,
+      "class1_Dice": 0.4174,
+      "class2_Dice": 0.0,
+      "type": "validation",
+      "delta_vs_baseline": -0.0116
+    },
+    {
+      "id": 3,
+      "trainer_config": "nnUNetTrainer_5epochs__nnUNetResEncUNetMPlans__3d_fullres",
+      "label": "ResEnc M — paper preset, residual encoder",
+      "foreground_Dice": 0.2364,
+      "foreground_IoU": 0.1524,
+      "class1_Dice": 0.4587,
+      "class2_Dice": 0.0142,
+      "type": "validation",
+      "delta_vs_baseline": 0.0161,
+      "paper_context": "Paper Table 1: ResEnc M = 91.99% ACDC vs 91.54% baseline — same upward trend"
+    },
+    {
+      "id": 4,
+      "trainer_config": "nnUNetTrainerDiceLoss_5epochs__nnUNetPlans__3d_fullres",
+      "label": "DiceLoss ablation — pure Dice loss, no CE",
+      "foreground_Dice": 0.4018,
+      "foreground_IoU": 0.2689,
+      "class1_Dice": 0.5699,
+      "class2_Dice": 0.2337,
+      "type": "validation",
+      "delta_vs_baseline": 0.1815,
+      "note": "Large gain on synthetic data; real-data gap is typically smaller"
+    },
+    {
+      "id": 5,
+      "trainer_config": "nnUNetTrainerNoMirroring_5epochs__nnUNetPlans__3d_fullres",
+      "label": "NoMirroring ablation — no flip augmentation",
+      "foreground_Dice": 0.9261,
+      "foreground_IoU": 0.8629,
+      "class1_Dice": 0.9443,
+      "class2_Dice": 0.9079,
+      "type": "validation",
+      "delta_vs_baseline": 0.7058,
+      "note": "SYNTHETIC DATA ARTIFACT: fixed labels identical across cases + no mirroring = trivial pattern matching. Not meaningful on real data."
+    },
+    {
+      "id": 6,
+      "trainer_config": "nnUNetTrainerBenchmark_5epochs__nnUNetPlans__3d_fullres",
+      "label": "GPU Benchmark — full pipeline (data load + augment + GPU)",
+      "fastest_epoch_s": 10.647,
+      "type": "benchmark",
+      "patch_size": [48, 56, 48],
+      "batch_size": 2,
+      "iterations_per_epoch": 250
+    }
+  ],
+  "background_jobs_status": {
+    "nnUNetTrainerNoMirroring_full_1000epochs": "RUNNING — epoch ~35/1000 at 17:20, ~3.5h remaining. Kill if not needed.",
+    "all_5epoch_experiments": "COMPLETE"
+  },
+  "summary": {
+    "ranking_by_foreground_dice": [
+      "NoMirroring_5epochs: 0.9261 (SYNTHETIC ARTIFACT)",
+      "DiceLoss_5epochs:    0.4018",
+      "ResEnc M:            0.2364",
+      "3d_fullres baseline: 0.2203",
+      "2d baseline:         0.2087"
+    ],
+    "gpu_benchmark": "10.647s/epoch on RTX 3090"
+  }
+}

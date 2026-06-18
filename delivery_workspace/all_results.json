@@ -1,0 +1,48 @@
+{
+  "experiment_dice": [
+    {
+      "experiment": "nnUNetTrainerNoMirroring_5epochs__nnUNetPlans__3d_fullres",
+      "fold": "fold_0",
+      "dice": 0.92609,
+      "summary_path": "\\\\islfs04vs1.moffitt.org\\UsersP$\\80033194\\Desktop\\NN-Net\\delivery_workspace\\nnUNet_results\\Dataset004_Hippocampus\\nnUNetTrainerNoMirroring_5epochs__nnUNetPlans__3d_fullres\\fold_0\\validation\\summary.json"
+    },
+    {
+      "experiment": "nnUNetTrainerDiceLoss_5epochs__nnUNetPlans__3d_fullres",
+      "fold": "fold_0",
+      "dice": 0.401801,
+      "summary_path": "\\\\islfs04vs1.moffitt.org\\UsersP$\\80033194\\Desktop\\NN-Net\\delivery_workspace\\nnUNet_results\\Dataset004_Hippocampus\\nnUNetTrainerDiceLoss_5epochs__nnUNetPlans__3d_fullres\\fold_0\\validation\\summary.json"
+    },
+    {
+      "experiment": "nnUNetTrainer_5epochs__nnUNetResEncUNetMPlans__3d_fullres",
+      "fold": "fold_0",
+      "dice": 0.236422,
+      "summary_path": "\\\\islfs04vs1.moffitt.org\\UsersP$\\80033194\\Desktop\\NN-Net\\delivery_workspace\\nnUNet_results\\Dataset004_Hippocampus\\nnUNetTrainer_5epochs__nnUNetResEncUNetMPlans__3d_fullres\\fold_0\\validation\\summary.json"
+    },
+    {
+      "experiment": "nnUNetTrainer_5epochs__nnUNetPlans__3d_fullres",
+      "fold": "fold_0",
+      "dice": 0.220274,
+      "summary_path": "\\\\islfs04vs1.moffitt.org\\UsersP$\\80033194\\Desktop\\NN-Net\\delivery_workspace\\nnUNet_results\\Dataset004_Hippocampus\\nnUNetTrainer_5epochs__nnUNetPlans__3d_fullres\\fold_0\\validation\\summary.json"
+    },
+    {
+      "experiment": "nnUNetTrainer_5epochs__nnUNetPlans__2d",
+      "fold": "fold_0",
+      "dice": 0.208707,
+      "summary_path": "\\\\islfs04vs1.moffitt.org\\UsersP$\\80033194\\Desktop\\NN-Net\\delivery_workspace\\nnUNet_results\\Dataset004_Hippocampus\\nnUNetTrainer_5epochs__nnUNetPlans__2d\\fold_0\\validation\\summary.json"
+    }
+  ],
+  "benchmark": {
+    "nnUNetTrainerBenchmark_5epochs_noDataLoading__nnUNetPlans__3d_fullres": {
+      "fastest_epoch_s": 7.55380654335022,
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "torch_version": "2.6.0+cu124"
+    },
+    "nnUNetTrainerBenchmark_5epochs__nnUNetPlans__3d_fullres": {
+      "fastest_epoch_s": 10.646910667419434,
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "torch_version": "2.6.0+cu124"
+    }
+  },
+  "baseline_epoch_time_s": 10.65,
+  "notes": "Trainers without _5epochs suffix were killed and recreated. Ablations used custom _5epochs variants."
+}

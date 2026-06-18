@@ -1,0 +1,47 @@
+{
+  "updated": "2026-06-18",
+  "phase_a_synthetic": {
+    "dataset": "Dataset004_Hippocampus (synthetic, 10 cases)",
+    "fold": 0,
+    "epochs": 5,
+    "experiments": [
+      {"name": "Baseline 3d_fullres", "dice": 0.2203},
+      {"name": "2D", "dice": 0.2087, "delta_vs_baseline": -0.0116},
+      {"name": "ResEnc M", "dice": 0.2364, "delta_vs_baseline": 0.0161},
+      {"name": "DiceLoss", "dice": 0.4018, "delta_vs_baseline": 0.1815},
+      {"name": "NoMirroring", "dice": 0.9261, "note": "SYNTHETIC ARTIFACT"}
+    ]
+  },
+  "phase_b_real": {
+    "dataset": "MSD Task04 Hippocampus (260 cases)",
+    "source": "https://msd-for-monai.s3.us-west-2.amazonaws.com/Task04_Hippocampus.tar",
+    "fold": 0,
+    "epochs": 5,
+    "trainer": "nnUNetTrainer_5epochs",
+    "plans": "nnUNetResEncUNetMPlans",
+    "train_cases": 208,
+    "val_cases": 52,
+    "foreground_dice": 0.8746,
+    "class1_dice": 0.8830,
+    "class2_dice": 0.8662,
+    "iou": 0.7791,
+    "summary_path": "nnUNet_results/Dataset004_Hippocampus/nnUNetTrainer_5epochs__nnUNetResEncUNetMPlans__3d_fullres/fold_0/validation/summary.json"
+  },
+  "benchmark": {
+    "full_pipeline_epoch_s": 10.65,
+    "gpu_only_epoch_s": 7.55,
+    "gpu": "NVIDIA GeForce RTX 3090"
+  },
+  "paper_comparison": {
+    "paper": "nnU-Net Revisited (arXiv:2404.09556)",
+    "acdc_resenc_m_target": 0.9199,
+    "acdc_baseline_target": 0.9154,
+    "status": "ACDC not yet run; Hippocampus real validates pipeline"
+  },
+  "next_steps": [
+    "Train 1000 epochs on real Hippocampus",
+    "5-fold cross-validation",
+    "Download ACDC and reproduce Table 1",
+    "Run baseline 3D on real data for fair comparison"
+  ]
+}
