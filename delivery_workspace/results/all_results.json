@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18",
+  "updated": "2026-07-15",
   "phase_a_synthetic": {
     "dataset": "Dataset004_Hippocampus (synthetic, 10 cases)",
     "fold": 0,
@@ -12,20 +12,40 @@
       {"name": "NoMirroring", "dice": 0.9261, "note": "SYNTHETIC ARTIFACT"}
     ]
   },
-  "phase_b_real": {
+  "phase_b_real_5epochs": {
     "dataset": "MSD Task04 Hippocampus (260 cases)",
     "source": "https://msd-for-monai.s3.us-west-2.amazonaws.com/Task04_Hippocampus.tar",
     "fold": 0,
     "epochs": 5,
-    "trainer": "nnUNetTrainer_5epochs",
+    "results": [
+      {
+        "name": "ResEnc M",
+        "trainer": "nnUNetTrainer_5epochs",
+        "plans": "nnUNetResEncUNetMPlans",
+        "foreground_dice": 0.8746,
+        "class1_dice": 0.8830,
+        "class2_dice": 0.8662
+      },
+      {
+        "name": "Baseline",
+        "trainer": "nnUNetTrainer_5epochs",
+        "plans": "nnUNetPlans",
+        "foreground_dice": 0.8716
+      }
+    ]
+  },
+  "phase_c_full_1000epochs": {
+    "status": "RUNNING_RESUMED",
     "plans": "nnUNetResEncUNetMPlans",
-    "train_cases": 208,
-    "val_cases": 52,
-    "foreground_dice": 0.8746,
-    "class1_dice": 0.8830,
-    "class2_dice": 0.8662,
-    "iou": 0.7791,
-    "summary_path": "nnUNet_results/Dataset004_Hippocampus/nnUNetTrainer_5epochs__nnUNetResEncUNetMPlans__3d_fullres/fold_0/validation/summary.json"
+    "config": "3d_fullres",
+    "fold": 0,
+    "stopped_at_epoch": 24,
+    "stopped_date": "2026-07-07",
+    "resume_epoch": 25,
+    "resume_date": "2026-07-15",
+    "why_stopped": "Parent process died before epoch 50; only checkpoint_best.pth existed (save_every=50). Likely session/process kill.",
+    "eta_hours": 34,
+    "status_file": "delivery_workspace/TRAINING_STATUS.txt"
   },
   "benchmark": {
     "full_pipeline_epoch_s": 10.65,
@@ -39,9 +59,9 @@
     "status": "ACDC not yet run; Hippocampus real validates pipeline"
   },
   "next_steps": [
-    "Train 1000 epochs on real Hippocampus",
+    "Finish 1000-epoch ResEnc M fold 0",
     "5-fold cross-validation",
     "Download ACDC and reproduce Table 1",
-    "Run baseline 3D on real data for fair comparison"
+    "Optional: Promise12 second dataset"
   ]
 }
