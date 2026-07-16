@@ -1,0 +1,21 @@
+﻿NN-Net Dataset004 Hippocampus ResEncM 3d_fullres fold_0 TRAINING STATUS
+=======================================================================
+Status: RUNNING (RESUMED with --c)
+Mode: RESUME (not restart from scratch)
+Why previous run stopped:
+  - Log ended at epoch 24 on 2026-07-07 13:04 with new best EMA Dice ~0.8324
+  - checkpoint_best.pth was saved (EMA best); checkpoint_latest.pth was NOT present
+    because nnU-Net save_every=50 (latest only every 50 epochs)
+  - Parent trainer process died; orphaned multiprocessing workers remained (killed before resume)
+  - Likely cause: process killed / session ended / machine sleep / disk-session issue (not epoch-complete failure)
+Resume action:
+  - Copied checkpoint_best.pth -> checkpoint_latest.pth so --c could load weights
+  - Started: nnUNetv2_train 4 3d_fullres 0 -p nnUNetResEncUNetMPlans --c
+PIDs:
+  - nnUNetv2_train.exe launcher: 30816
+  - python trainer (GPU): 14016
+Start time: 2026-07-15 23:29:48
+ETA: ~34 hours from start (~2026-07-17 09:29)
+Log redirect: F:\Desktop\NN-Net\delivery_workspace\log_train_resencm_full_d4_resume.txt
+  (stdout may be buffered; prefer fold_0 training_log_*.txt)
+Updated: 2026-07-15 23:31:33
