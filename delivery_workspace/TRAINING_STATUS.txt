@@ -1,25 +1,26 @@
 NN-Net Dataset004 Hippocampus ResEncM 3d_fullres fold_0 TRAINING STATUS
 =======================================================================
-Status: RUNNING (RESUMED with --c)
-Mode: RESUME (not restart from scratch)
-Current epoch: 26 (in progress; epoch 25 completed)
-Last completed epoch: 25
-  - Pseudo dice @ epoch 25: [0.8961, 0.8769]
-  - Epoch time: 127.74 s
-  - New best EMA pseudo Dice: 0.8378
-Why previous run stopped:
-  - Log ended at epoch 24 on 2026-07-07 13:04 with new best EMA Dice ~0.8324
-  - checkpoint_best.pth was saved (EMA best); checkpoint_latest.pth was NOT present
-    because nnU-Net save_every=50 (latest only every 50 epochs)
-  - Parent trainer process died; orphaned multiprocessing workers remained (killed before resume)
-  - Likely cause: process killed / session ended / machine sleep / disk-session issue (not epoch-complete failure)
-Resume action:
-  - Copied checkpoint_best.pth -> checkpoint_latest.pth so --c could load weights
-  - Started: nnUNetv2_train 4 3d_fullres 0 -p nnUNetResEncUNetMPlans --c
-PIDs:
-  - nnUNetv2_train.exe launcher: 30816
-  - python trainer (GPU): 14016
-Start time: 2026-07-15 23:29:48
-ETA: ~34 hours from start (~2026-07-17 09:29)
-Log: delivery_workspace/nnUNet_results/Dataset004_Hippocampus/nnUNetTrainer__nnUNetResEncUNetMPlans__3d_fullres/fold_0/training_log_2026_7_15_23_30_14.txt
-Updated: 2026-07-15 23:34:56
+Status: RUNNING (resumed) — NOT finished; target 1000 epochs
+Mode: RESUME with --c via delivery_workspace/resume_train_d4.ps1 (detached Hidden)
+Started: 2026-07-19 21:24 (launcher PID 25772; new training_log_2026_7_19_21_24_48.txt)
+Resume checkpoint: checkpoint_latest.pth (save_every=50) → trainer restarted at Epoch 400
+  - Prior session last FULLY completed epoch was 440, but latest ckpt on disk was ~epoch 400
+  - Epochs 400–440 will be re-run; then continues toward 999
+Current epoch (this session): 400 started @ 2026-07-19 21:25:24
+Last completed epoch (prior session): 440
+  - Pseudo dice @ epoch 440: [0.8926, 0.8750]
+  - Last logged New best EMA pseudo Dice: 0.8858 (2026-07-16 ~08:06)
+Finished?: NO
+Checkpoints (fold_0):
+  - checkpoint_best.pth   (EMA best)
+  - checkpoint_latest.pth (loaded for --c)
+This check (2026-07-19 21:26):
+  - GPU: RTX 3090 busy (~100% util, ~10270 MiB, ~344 W)
+  - New log lines present; Epoch 400 in progress after resume
+PIDs: launcher 25772 (Start-Process); trainer python under Anaconda (see nvidia-smi)
+Log (this resume): delivery_workspace/nnUNet_results/Dataset004_Hippocampus/nnUNetTrainer__nnUNetResEncUNetMPlans__3d_fullres/fold_0/training_log_2026_7_19_21_24_48.txt
+Launcher: delivery_workspace/resume_train_d4.ps1
+Cmd: nnUNetv2_train 4 3d_fullres 0 -p nnUNetResEncUNetMPlans --c
+Remaining: from epoch 400 → 999 (~600 epochs) at ~143 s/epoch ≈ ~24 GPU-hours
+Paper docs: results/PAPER_SUMMARY.md, results/PAPER_TABLE1_REPRODUCTION.md
+Updated: 2026-07-19 21:26

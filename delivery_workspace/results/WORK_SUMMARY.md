@@ -1,12 +1,20 @@
-# NN-Net — Work Summary
+# NN-Net - Work Summary
 
 **Paper:** [nnU-Net Revisited](https://arxiv.org/abs/2404.09556) (arXiv:2404.09556)  
-**Stack:** nnU-Net v2.8.0 · PyTorch 2.6.0+cu124 · NVIDIA RTX 3090  
+**Stack:** nnU-Net v2.8.0 / PyTorch 2.6.0+cu124 / NVIDIA RTX 3090  
 **Repo:** https://github.com/khangpt2k6/NN-net  
-**Updated:** 2026-07-15
+**Updated:** 2026-07-19
 
 ---
 
+## Status flash (2026-07-19)
+
+- Hippocampus ResEnc M 1000-ep fold0 **STOPPED at epoch 440** (epoch 441 started but not finished).
+- **Resumed** via detached `delivery_workspace/resume_train_d4.ps1` (`nnUNetv2_train 4 3d_fullres 0 -p nnUNetResEncUNetMPlans --c`).
+- Paper docs: `results/PAPER_SUMMARY.md`, `results/PAPER_TABLE1_REPRODUCTION.md`.
+- Live file: `delivery_workspace/TRAINING_STATUS.txt`.
+
+---
 ## Why full training stopped (2026-07-07)
 
 | Fact | Detail |
